@@ -1,0 +1,145 @@
+<?php  
+// koneksi ke database
+$conn = mysqli_connect("localhost", "root", "", "daftar_dokumen");
+
+// ambil data dari tabel dokumen / query dokumen
+$result = mysqli_query($conn, "SELECT * FROM dokumen");
+
+function query($query) {
+	global $conn;
+	$result = mysqli_query($conn, $query);
+	$rows = [];
+	while($row = mysqli_fetch_assoc($result)) {
+		$rows[] = $row;
+	}
+	return $rows;
+}
+
+function tambah($data) {
+	global $conn;
+	// ambil data dari tiap elemen dalam form
+	$nama_doc = htmlspecialchars($data["nama_doc"]);
+	$file_doc = htmlspecialchars($data["file_doc"]);
+
+	// upload file
+	$doc = upload();
+	if (!$doc) {
+		return false;
+	}
+
+	// query insert data
+	$query = "INSERT INTO dokumen
+				VALUES
+				('', '$nama_doc', '$file_doc') 
+				";
+	mysqli_query($conn, $query);
+
+	return mysqli_affected_rows($conn);
+
+}
+
+function upload() {
+
+	$namaFile = $_FILES['doc']['name'];
+	$ukuranFile = $_FILES['doc']['size'];
+	$error = $_FILES['doc']['error'];
+	$tmpName = $_FILES['doc']['tmp_name'];
+
+	// cek apakah tidak ada doc yang diupload
+	if ($error === 4) {
+		echo "<script>
+				alert('pilih dokumen terlebih dahulu')
+				</script>";
+		return false;
+	}
+
+	// cek apakah yang diupload adalah gambar
+	$ekstensiFileValid= ['doc', 'pdf', 'txt'];
+	$ekstensiFile = explode('.', $namaFile);
+	$ekstensiFile = strtolower(end($ekstensiFile));
+	if (!in_array($ekstensiFile, $ekstensiFileValid)) {
+		echo "<script>
+				alert('yang anda upload bukan dokumen')
+			</script>";
+		return false;
+	}
+
+	// cek jika ukurannya terlalu besar
+	if ($ukuranFile > 10000000) {
+		echo "<script>
+				alert('ukuran dokumen terlalu besar')
+				</script>";
+		return false;
+	}
+
+	// lolos pengecekan file siap diupload
+	// generate nama file baru
+	$namaFileBaru = uniqid();
+	$namaFileBaru .= '.';
+	$namaFileBaru .= $ekstensiFile;
+	move_uploaded_file($tmpName, 'asset/doc . $namaFileBaru');
+
+	return $namaFileBaru;
+}
+
+function hapus($id) {
+	global $conn;
+	mysqli_query($conn, "DELETE FROM dokumen WHERE id = $id");
+	return mysqli_affected_rows($conn);
+}
+
+function ubah($data) {
+	global $conn;
+	$id = $data["id"];
+	$nama_doc = $data["nama_doc"];
+	$file_doc = $data["file_doc"];
+	
+	// query insert data
+	$query = "UPDATE dokumen SET 
+				nama_doc = '$nama_doc',
+				file_doc = '$file_doc',
+			WHERE id = $id
+				";
+	mysqli_query($conn, $query);
+
+	return mysqli_affected_rows($conn);
+
+}
+
+function cari($keyword) {
+	$query = query("SELECT * FROM dokumen WHERE
+				nama_doc LIKE '%$keyword%' OR
+				file_doc LIKE '%$keyword%'
+				");
+	return $query;
+}
+
+function registrasi($data) {
+	global $conn;
+	$username = strtolower(stripslashes($data["username"]));
+	$password = mysqli_real_escape_string($conn, $data["password"]);
+	$password2 = mysqli_real_escape_string($conn, $data["password2"]);
+
+	// cek username sudah ada atau belum
+	$result = mysqli_query($conn, "SELECT username FROM user WHERE username = '$username' ");
+	if (mysqli_fetch_assoc($result)) {
+		echo "<script>
+				alert('Username sudah terdaftar')
+			</script>";
+
+	}
+	//cek konfirmasi password
+	if ($password !== $password2) {
+		echo "<script>
+				alert('Konfirmasi password tidak sesuai!')
+			</script>";
+		return false;
+	}
+
+	// enkripsi password
+	$password = password_hash($password, PASSWORD_DEFAULT);
+
+	// tambahkan user baru ke database
+	mysqli_query($conn, "INSERT INTO user VALUES('', '$username', '$password')");
+	return mysqli_affected_rows($conn);
+}
