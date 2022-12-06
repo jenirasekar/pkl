@@ -1,6 +1,6 @@
 <?php  
 // koneksi ke database
-$conn = mysqli_connect("localhost", "root", "", "daftar_dokumen");
+$conn = mysqli_connect("localhost", "root", "", "s_daftar_doc");
 
 // ambil data dari tabel dokumen / query dokumen
 $result = mysqli_query($conn, "SELECT * FROM dokumen");
@@ -137,9 +137,13 @@ function registrasi($data) {
 	}
 
 	// enkripsi password
-	$password = password_hash($password, PASSWORD_DEFAULT);
+	// note : pake PASSWORD_BCRYPT
+	$password = password_hash($password, PASSWORD_BCRYPT);
 
 	// tambahkan user baru ke database
+	/* note : pas nambah gagal gara-gara kolom id ga dikasih auto increment,
+	jadi nilainya 0 terus..., pesannya duplicate error deh
+	*/
 	mysqli_query($conn, "INSERT INTO user VALUES('', '$username', '$password')");
 	return mysqli_affected_rows($conn);
 }
