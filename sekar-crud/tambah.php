@@ -1,4 +1,4 @@
-<?php  
+<?php
 session_start();
 
 if (!isset($_SESSION["login"])) {
@@ -35,25 +35,29 @@ if (isset($_POST['submit'])) {
 <head>
 	<meta charset="utf-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+	<link rel="stylesheet" href="asset/style/style.css">
 	<title>Tambah Data Dokumen</title>
 </head>
 
 <body>
-	<h1>Tambah Data Dokumen</h1>
-	<form action="" method="post" enctype="multipart/form-data">
-		<ul>
-			<li>
-				<label for="nama_doc">Nama Dokumen :</label>
-				<input type="text" name="nama_doc" id="nama_doc">
-			</li>
-			<li>
-				<label for="doc">NRP :</label>
-				<input type="file" name="doc" id="doc">
-			</li>
-			<button type="submit" name="submit">Tambah Data!</button>
-			</li>
-		</ul>
-	</form>
+
+	<div class="vh-100 d-flex justify-content-center align-items-center">
+		<div class="col-md-4 p-5 shadow-sm border rounded-5 border-primary">
+			<h1>Tambah Data Dokumen</h1>
+			<form action="" method="post" enctype="multipart/form-data">
+				<div class="mb-3">
+					<label for="nama_doc">Nama Dokumen :</label>
+					<input type="text" name="nama_doc" id="nama_doc" class="form-control bg-info bg-opacity-10 border border-primary">
+				</div>
+				<div class="mb-3">
+					<label for="doc">File Dokumen :</label>
+					<input type="file" name="doc" id="doc" class="form-control bg-info bg-opacity-10 border border-primary">
+				</div>
+				<button type="submit" name="submit">Tambah Data!</button>
+			</form>
+		</div>
+	</div>
 </body>
 
 </html>

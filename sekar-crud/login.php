@@ -58,37 +58,42 @@ if (isset($_POST["login"])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="stylesheet" href="asset/style/style.css">
     <title>Halaman Login</title>
 </head>
 
 <body>
-    <h1>Halaman Login</h1>
-    <?php if (isset($error)) : ?>
-        <p style="color: red;">username atau password salah!</p>
-    <?php endif; ?>
-    <form action="" method="post">
-        <ul>
-            <li>
-                <label for="username">Username:</label>
-                <input type="text" name="username" id="username">
-            </li>
-            <br>
-            <li>
-                <label for="password">Password:</label>
-                <input type="password" name="password" id="password">
-            </li>
-            <br>
-            <li>
-                <input type="checkbox" name="remember" id="remember">
-                <label for="remember">Remember me</label>
-            </li>
-            <br>
-            <li>
-                <button type="submit" name="login">Login</button>
-            </li>
-            </li>
-        </ul>
-    </form>
+    <div class="vh-100 d-flex justify-content-center align-items-center">
+        <div class="col-md-4 p-5 shadow-sm border rounded-5 border-primary">
+            <h1>Halaman Login</h1>
+            <?php if (isset($error)) : ?>
+                <p style="color: red;">username atau password salah!</p>
+            <?php endif; ?>
+            <form action="" method="post">
+                <div class="mb-3">
+                    <label for="username">Username:</label>
+                    <input type="text" name="username" id="username" class="form-control bg-info bg-opacity-10 border border-primary">
+                </div>
+                <div class="mb-3">
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password" class="form-control bg-info bg-opacity-10 border border-primary">
+                </div>
+                <div class="mb-3">
+                    <input type="checkbox" name="remember" id="remember">
+                    <label for="remember">Remember me</label>
+                </div>
+                <div class="grid">
+                    <button type="submit" name="login" class="btn btn-primary">Login</button>
+                </div>
+            </form>
+            <div class="mt-3">
+                <p class="mb-0  text-center">Don't have an account? <a href="registrasi.php" class="text-primary fw-bold">Sign
+                        Up</a></p>
+            </div>
+
+        </div>
+    </div>
 </body>
 
 </html>

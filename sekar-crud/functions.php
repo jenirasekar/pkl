@@ -58,7 +58,7 @@ function upload() {
 	}
 
 	// cek apakah yang diupload adalah gambar
-	$ekstensiFileValid= ['doc', 'pdf', 'txt'];
+	$ekstensiFileValid= ['docx', 'pdf', 'txt'];
 	$ekstensiFile = explode('.', $namaFile);
 	$ekstensiFile = strtolower(end($ekstensiFile));
 	if (!in_array($ekstensiFile, $ekstensiFileValid)) {

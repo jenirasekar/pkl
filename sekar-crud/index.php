@@ -51,12 +51,14 @@ if (isset($_POST['cari'])) {
 						<th>No.</th>
 						<th>Nama Dokumen</th>
 						<th>File Dokumen</th>
+						<th>Aksesbilitas</th>
 						<th>Aksi</th>
 					</tr>
 					<?php $i = 1; ?> <?php foreach ($dokumen as $row) : ?> <tr>
 							<td><?= $i ?></td>
 							<td><?= $row["nama_doc"] ?></td>
 							<td><?= $row["file_doc"]  ?></td>
+							<td></td>
 							<td>
 								<a href="ubah.php?id=<?= $row["id"]; ?>">Ubah</a> |
 								<a href="hapus.php?id=<?= $row["id"]; ?>" onclick="return confirm('Apakah Anda Yakin?');">Hapus</a>
