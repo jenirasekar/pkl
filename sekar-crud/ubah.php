@@ -26,7 +26,8 @@ if (isset($_POST['submit'])) {
 		";
 	} else {
 		echo "
-			script>
+		// kurang < jadinya tag <script> ga jalan
+			<script>
 				alert('data gagal diubah!');
 				document.location.href = 'index.php';
 			</script>
@@ -50,7 +51,7 @@ if (isset($_POST['submit'])) {
 		<ul>
 			<li>
 				<label for="nama">Nama Dokumen :</label>
-				<input type="text" name="nama" id="nama" required value="<?= $dok['nama_doc'] ?>">
+				<input type="text" name="nama_doc" id="nama" required value="<?= $dok['nama_doc'] ?>">
 			</li>
 			<li>
 				<label for="file_doc">File Dokumen </label>
