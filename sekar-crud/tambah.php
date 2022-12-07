@@ -46,15 +46,15 @@ if (isset($_POST['submit'])) {
 			<h1>Tambah Data Dokumen</h1>
 			<form action="" method="post" enctype="multipart/form-data">
 				<div class="mb-3">
-					<label for="nama_doc">Nama Dokumen :</label>
+					<label for="nama_doc">Nama Dokumen:</label>
 					<input type="text" name="nama_doc" id="nama_doc" class="form-control bg-info bg-opacity-10 border border-primary">
 				</div>
 				<div class="mb-3">
-					<label for="doc">File Dokumen :</label>
+					<label for="doc">File Dokumen:</label>
 					<input type="file" name="doc" id="doc" class="form-control bg-info bg-opacity-10 border border-primary">
 				</div>
 				<div class="mb-3">
-					<label for="access">Aksesbilitas :</label>
+					<label for="access">Aksesbilitas:</label>
 					<select name="access" id="access">
 						<option value="Public" class="form-control bg-info bg-opacity-10 border border-primary">Public</option>
 						<option value="Private" class="form-control bg-info bg-opacity-10 border border-primary">Private</option>
