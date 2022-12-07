@@ -10,7 +10,6 @@ require 'functions.php';
 // cek apakah tombol submit sudah ditekan atau belum
 if (isset($_POST['submit'])) {
 
-
 	// cek apakah data berhasil ditambahkan atau tidak
 	if (tambah($_POST) > 0) {
 		echo "
@@ -42,8 +41,6 @@ if (isset($_POST['submit'])) {
 <body>
 	<h1>Tambah Data Dokumen</h1>
 	<form action="" method="post" enctype="multipart/form-data">
-		<input type="hidden" name="id" value="<?= $dokumen["id"]; ?>">
-		<input type="hidden" name="gambarLama" value="<?= $dokumen["doc"]; ?>">
 		<ul>
 			<li>
 				<label for="nama_doc">Nama Dokumen :</label>

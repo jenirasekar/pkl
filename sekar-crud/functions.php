@@ -19,7 +19,9 @@ function tambah($data) {
 	global $conn;
 	// ambil data dari tiap elemen dalam form
 	$nama_doc = htmlspecialchars($data["nama_doc"]);
-	$file_doc = htmlspecialchars($data["file_doc"]);
+	// di input namenya kamu cuma doc bukan file_doc
+	// trus untuk ngambil nama file pakek $_FILES
+	$file_doc = htmlspecialchars($_FILES["doc"]['name']);
 
 	// upload file
 	$doc = upload();
@@ -28,6 +30,8 @@ function tambah($data) {
 	}
 
 	// query insert data
+	// di dalam values datanya harus urut, id, nama_doc, file_doc
+	// tapi di database urutan kolomnya beda, id di belakang, jadi di databasenya diubah urutannya
 	$query = "INSERT INTO dokumen
 				VALUES
 				('', '$nama_doc', '$file_doc') 
@@ -77,7 +81,9 @@ function upload() {
 	$namaFileBaru = uniqid();
 	$namaFileBaru .= '.';
 	$namaFileBaru .= $ekstensiFile;
-	move_uploaded_file($tmpName, 'asset/doc . $namaFileBaru');
+	// file udah berhasil keupload tapi namanya ngaco, di kodingan php dasarmu errornya juga gini
+	// gara gara kurang slash sama folder doc harus dibuat dulu di dalem asset
+	move_uploaded_file($tmpName, 'asset/doc/' . $namaFileBaru);
 
 	return $namaFileBaru;
 }
