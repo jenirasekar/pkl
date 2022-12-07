@@ -29,9 +29,6 @@ if (isset($_POST['cari'])) {
 <body>
 
 	<div class="container">
-		<div class="d-grid gap-2 d-md-block">
-			<button class="btn btn-primary" type="button"><a href="logout.php"></a>Logout</button>
-		</div>
 		<div class="row">
 			<div class="col">
 				<h1>Daftar Dokumen</h1>
@@ -40,7 +37,7 @@ if (isset($_POST['cari'])) {
 				<br><br>
 				<nav class="navbar bg-light">
 					<div class="container-fluid">
-
+						
 						<form action="" method="post" class="d-flex" role="search">
 							<input type="text" name="keyword" class="form-control me-2">
 							<button type="submit" name="cari"class="btn btn-outline-secondary" autofocus placeholder="masukkan keyword pencarian" autocomplete="off">Cari!</button>
@@ -49,7 +46,7 @@ if (isset($_POST['cari'])) {
 				</nav>
 				<br>
 				<table class="table table-striped-columns">
-
+					
 					<tr>
 						<th>No.</th>
 						<th>Nama Dokumen</th>
@@ -66,12 +63,15 @@ if (isset($_POST['cari'])) {
 							</td>
 						</tr>
 						<?php $i++; ?>
-					<?php endforeach; ?>
+						<?php endforeach; ?>
+					</div>
+				</div>
 			</div>
+		</table>
+		<div class="d-grid gap-2 d-md-block">
+			<a href="logout.php"><button class="btn btn-primary" type="button">Logout</button></a>
 		</div>
-	</div>
-	</table>
-
+		
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 </body>
