@@ -100,10 +100,11 @@ function ubah($data) {
 	$id = $data["id"];
 	$nama_doc = $data["nama_doc"];
 	$file_doc = $data["file_doc"];
+	$access = $data["access"];
 	
 	// query insert data 
 	// sebelum where gausah koma, enakan dibikin satu baris biar keliatan
-	$query = "UPDATE dokumen SET nama_doc = '$nama_doc', file_doc = '$file_doc' WHERE id = $id ";
+	$query = "UPDATE dokumen SET nama_doc = '$nama_doc', file_doc = '$file_doc', access = '$access' WHERE id = $id ";
 	mysqli_query($conn, $query);
 
 	return mysqli_affected_rows($conn);

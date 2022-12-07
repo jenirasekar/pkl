@@ -61,15 +61,15 @@ if (isset($_POST['submit'])) {
 					<label for="file_doc">File Dokumen </label>
 					<input type="text" name="file_doc" id="file_doc" required value="<?= $dok["file_doc"] ?>" class="form-control bg-info bg-opacity-10 border border-primary">
 				</div>
-				<div class="grid">
-					<button type="submit" name="submit" class="btn btn-primary">Ubah Data!</button>
-				</div>
 				<div class="mb-3">
 					<label for="access">Aksesbilitas :</label>
 					<select name="access" id="access">
 						<option value="pub" class="form-control bg-info bg-opacity-10 border border-primary">Public</option>
 						<option value="priv" class="form-control bg-info bg-opacity-10 border border-primary">Private</option>
 					</select>
+				</div>
+				<div class="grid">
+					<button type="submit" name="submit" class="btn btn-primary">Ubah Data!</button>
 				</div>
 			</form>
 		</div>
