@@ -78,7 +78,7 @@ function upload() {
 	}
 
 	// lolos pengecekan file siap diupload
-	// generate nama file baru
+	// generate nama new file
 	$namaFileBaru = uniqid();
 	$namaFileBaru .= '.';
 	$namaFileBaru .= $ekstensiFile;
