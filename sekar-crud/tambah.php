@@ -41,7 +41,6 @@ if (isset($_POST['submit'])) {
 </head>
 
 <body>
-
 	<div class="vh-100 d-flex justify-content-center align-items-center">
 		<div class="col-md-4 p-5 shadow-sm border rounded-5 border-primary">
 			<h1>Tambah Data Dokumen</h1>
@@ -53,6 +52,13 @@ if (isset($_POST['submit'])) {
 				<div class="mb-3">
 					<label for="doc">File Dokumen :</label>
 					<input type="file" name="doc" id="doc" class="form-control bg-info bg-opacity-10 border border-primary">
+				</div>
+				<div class="mb-3">
+					<label for="access">Aksesbilitas :</label>
+					<select name="access" id="access">
+						<option value="Public" class="form-control bg-info bg-opacity-10 border border-primary">Public</option>
+						<option value="Private" class="form-control bg-info bg-opacity-10 border border-primary">Private</option>
+					</select>
 				</div>
 				<button type="submit" name="submit">Tambah Data!</button>
 			</form>

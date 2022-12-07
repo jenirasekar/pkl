@@ -19,6 +19,7 @@ function tambah($data) {
 	global $conn;
 	// ambil data dari tiap elemen dalam form
 	$nama_doc = htmlspecialchars($data["nama_doc"]);
+	$access = htmlspecialchars($data["access"]);
 	// di input namenya kamu cuma doc bukan file_doc
 	// trus untuk ngambil nama file pakek $_FILES
 	$file_doc = htmlspecialchars($_FILES["doc"]['name']);
@@ -34,7 +35,7 @@ function tambah($data) {
 	// tapi di database urutan kolomnya beda, id di belakang, jadi di databasenya diubah urutannya
 	$query = "INSERT INTO dokumen
 				VALUES
-				('', '$nama_doc', '$file_doc') 
+				('', '$nama_doc', '$file_doc', '$access') 
 				";
 	mysqli_query($conn, $query);
 

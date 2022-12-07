@@ -58,7 +58,10 @@ if (isset($_POST['cari'])) {
 							<td><?= $i ?></td>
 							<td><?= $row["nama_doc"] ?></td>
 							<td><?= $row["file_doc"]  ?></td>
-							<td></td>
+							<td>
+								<option value="Public"><?= $row["access"]; ?></option>
+								<option value="Private"><?= $row["access"]; ?></option>
+							</td>
 							<td>
 								<a href="ubah.php?id=<?= $row["id"]; ?>">Ubah</a> |
 								<a href="hapus.php?id=<?= $row["id"]; ?>" onclick="return confirm('Apakah Anda Yakin?');">Hapus</a>
@@ -71,7 +74,7 @@ if (isset($_POST['cari'])) {
 			</div>
 		</table>
 		<div class="d-grid gap-2 d-md-block">
-			<a href="logout.php"><button class="btn btn-primary" type="button">Logout</button></a>
+			<a href="logout.php"><button class="btn btn-danger" type="button">Logout</button></a>
 		</div>
 		
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
