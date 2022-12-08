@@ -52,6 +52,7 @@ if (isset($_POST['cari'])) {
 						<th>Nama Dokumen</th>
 						<th>File Dokumen</th>
 						<th>Aksebilitas</th>
+						<th>Created By</th>
 						<th>Aksi</th>
 					</tr>
 					<?php $i = 1; ?> <?php foreach ($dokumen as $row) : ?> <tr>

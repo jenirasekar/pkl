@@ -41,7 +41,7 @@ if (isset($_POST["register"])) {
                     <input type="password" name="password2" id="password2" class="form-control bg-info bg-opacity-10 border border-primary">
                 </div>
                 <div class="grid">
-                    <button type-="submit" name="register">Register</button>
+                    <button type-="submit" name="register" class="btn btn-primary">Register</button>
                 </div>
                 <div class="mt-3">
                     <p class="mb-0  text-center">Already have an account? <a href="login.php" class="text-primary fw-bold">Sign
