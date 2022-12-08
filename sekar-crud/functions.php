@@ -23,7 +23,9 @@ function tambah($data) {
 	// di input namenya kamu cuma doc bukan file_doc
 	// trus untuk ngambil nama file pakek $_FILES
 	$file_doc = htmlspecialchars($_FILES["doc"]['name']);
-
+	// usernamenya ngambil dari sesi user yang sedang login, ga perlu input baru di tambah.php
+	$created_by = $_SESSION['username'];
+	
 	// upload file
 	$doc = upload();
 	if (!$doc) {
@@ -35,7 +37,7 @@ function tambah($data) {
 	// tapi di database urutan kolomnya beda, id di belakang, jadi di databasenya diubah urutannya
 	$query = "INSERT INTO dokumen
 				VALUES
-				('', '$nama_doc', '$file_doc', '$access') 
+				('', '$nama_doc', '$file_doc', '$access', '$created_by')
 				";
 	mysqli_query($conn, $query);
 

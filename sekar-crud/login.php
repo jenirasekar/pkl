@@ -35,6 +35,8 @@ if (isset($_POST["login"])) {
 
             // set session
             $_SESSION["login"] = true;
+            // pas berhasil login, kasih session username
+            $_SESSION["username"] = $row["username"];
 
             // cek remember me
             if (isset($_POST['remember'])) {

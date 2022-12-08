@@ -51,17 +51,16 @@ if (isset($_POST['cari'])) {
 						<th>No.</th>
 						<th>Nama Dokumen</th>
 						<th>File Dokumen</th>
-						<th>Aksesbilitas</th>
+						<th>Aksebilitas</th>
 						<th>Aksi</th>
 					</tr>
 					<?php $i = 1; ?> <?php foreach ($dokumen as $row) : ?> <tr>
 							<td><?= $i ?></td>
 							<td><?= $row["nama_doc"] ?></td>
 							<td><?= $row["file_doc"]  ?></td>
-							<td>
-								<option value="Public"><?= $row["access"]; ?></option>
-								<option value="Private"><?= $row["access"]; ?></option>
-							</td>
+							<td><?= $row['access'] ?></td>
+							<!-- tampilin user yang nambahin docnya -->
+							<td></td>
 							<td>
 								<a href="ubah.php?id=<?= $row["id"]; ?>">Ubah</a> |
 								<a href="hapus.php?id=<?= $row["id"]; ?>" onclick="return confirm('Apakah Anda Yakin?');">Hapus</a>
@@ -79,6 +78,8 @@ if (isset($_POST['cari'])) {
 		
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
+
+	<!-- <script src="asset/js/script.js"></script> -->
 </body>
 
 </html>
