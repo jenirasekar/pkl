@@ -56,8 +56,8 @@ if (isset($_POST['submit'])) {
 				<div class="mb-3">
 					<label for="access">Aksesbilitas:</label>
 					<select name="access" id="access">
-						<option value="public" class="form-control bg-info bg-opacity-10 border border-primary">Public</option>
-						<option value="private" class="form-control bg-info bg-opacity-10 border border-primary">Private</option>
+						<option value="Public" class="form-control bg-info bg-opacity-10 border border-primary">Public</option>
+						<option value="Private" class="form-control bg-info bg-opacity-10 border border-primary">Private</option>
 					</select>
 				</div>
 				<button type="submit" name="submit" class="btn btn-primary">Tambah Data!</button>
