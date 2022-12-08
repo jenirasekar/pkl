@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Dec 07, 2022 at 09:57 AM
+-- Generation Time: Dec 08, 2022 at 09:29 AM
 -- Server version: 10.4.22-MariaDB
 -- PHP Version: 8.1.1
 
@@ -31,17 +31,18 @@ CREATE TABLE `dokumen` (
   `id` int(11) NOT NULL,
   `nama_doc` varchar(30) NOT NULL,
   `file_doc` varchar(30) NOT NULL,
-  `access` varchar(30) NOT NULL
+  `access` enum('public','private') NOT NULL,
+  `created_by` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Dumping data for table `dokumen`
 --
 
-INSERT INTO `dokumen` (`id`, `nama_doc`, `file_doc`, `access`) VALUES
-(1, 'Dataase Uji Kompetensi Bab 5', 'db_ukom5.doc', ''),
-(2, 'Makalah Kesultanan Demak', 'kesultanan_demak.doc', ''),
-(5, 'PJOK Daring 2', 'PJOK D2.docx', 'Private');
+INSERT INTO `dokumen` (`id`, `nama_doc`, `file_doc`, `access`, `created_by`) VALUES
+(12, 'PJOK Daring 2', 'PJOK D2.docx', '', ''),
+(13, 'Dokumen Supersemar', 'supersemar.txt', 'private', 'admin'),
+(16, 'Procedure Text', 'procedure text.txt', 'public', 'wira');
 
 -- --------------------------------------------------------
 
@@ -61,8 +62,7 @@ CREATE TABLE `user` (
 
 INSERT INTO `user` (`id`, `username`, `password`) VALUES
 (1, 'admin', '$2y$10$liETSmlwVyOgCYgdRudvGeeZVAQIwdX3h6VPd8Vtcgo49RJKg/nbW'),
-(2, 'sekar', '$2y$10$/68Zehx3J3fzEl.BhX8Nb.V5UawP/jbT6glp0wvv3QVn8VucSfWHi'),
-(4, 'wira', '$2y$10$eGj.a2WvdShqzvjaGaeZb.XSGShUGMUANfLiAzUJzhzPhKufI1HS2');
+(6, 'wira', '$2y$10$fMOKNiR4DPJ/BznwGbgIveAotVp.dWbqpmEH4pxX8rDbl6DX5IcDy');
 
 --
 -- Indexes for dumped tables
@@ -88,13 +88,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT for table `dokumen`
 --
 ALTER TABLE `dokumen`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT for table `user`
 --
 ALTER TABLE `user`
-  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
