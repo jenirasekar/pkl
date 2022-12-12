@@ -1,0 +1,9 @@
+.wave {
+    position: relative;
+    bottom: 0;
+}
+
+.jumbotron {
+    padding-top: 6rem;
+    background-color: #ffff;
+}
