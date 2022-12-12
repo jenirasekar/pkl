@@ -1,4 +1,4 @@
-<?php  
+<?php
 session_start();
 
 if (!isset($_SESSION["login"])) {
@@ -32,21 +32,21 @@ if (isset($_POST['cari'])) {
 		<div class="row">
 			<div class="col">
 				<h1>Daftar Dokumen</h1>
-				
+
 				<a href="tambah.php">Tambah Dokumen</a>
 				<br><br>
 				<nav class="navbar bg-light">
 					<div class="container-fluid">
-						
+
 						<form action="" method="post" class="d-flex" role="search">
 							<input type="text" name="keyword" class="form-control me-2">
-							<button type="submit" name="cari"class="btn btn-outline-secondary" autofocus placeholder="masukkan keyword pencarian" autocomplete="off">Cari!</button>
+							<button type="submit" name="cari" class="btn btn-outline-secondary" autofocus placeholder="masukkan keyword pencarian" autocomplete="off">Cari!</button>
 						</form>
 					</div>
 				</nav>
 				<br>
 				<table class="table table-striped-columns">
-					
+
 					<tr>
 						<th>No.</th>
 						<th>Nama Dokumen</th>
@@ -60,26 +60,44 @@ if (isset($_POST['cari'])) {
 							<td><?= $row["file_doc"]  ?></td>
 							<td class="access"><?= $row['access'] ?></td>
 							<!-- tampilin user yang nambahin docnya -->
-							<!-- <td></td> -->
+							<td class="uploader"><?= $row["created_by"]  ?></td>
 							<td>
 								<a href="ubah.php?id=<?= $row["id"]; ?>">Ubah</a> |
 								<a href="hapus.php?id=<?= $row["id"]; ?>" onclick="return confirm('Apakah Anda Yakin?');">Hapus</a>
 							</td>
 						</tr>
 						<?php $i++; ?>
-						<?php endforeach; ?>
-					</div>
-				</div>
+					<?php endforeach; ?>
 			</div>
-		</table>
-		<div class="d-grid gap-2 d-md-block">
-			<a href="logout.php"><button class="btn btn-danger" type="button">Logout</button></a>
 		</div>
-		
+	</div>
+	</table>
+	<div class="d-grid gap-2 d-md-block">
+		<a href="logout.php"><button class="btn btn-danger" type="button">Logout</button></a>
+	</div>
+
 	<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-oBqDVmMz9ATKxIep9tiCxS/Z9fNfEXiDAYTujMAeBAsjFuCZSmKbSSUnQlmh/jp3" crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.min.js" integrity="sha384-cuYeSxntonz0PPNlHhBs68uyIAVpIIOZZ5JqeqvYYIcEL727kskC66kF92t6Xl2V" crossorigin="anonymous"></script>
 
-	<script src="asset/js/script.js"></script>
+	<!-- <script src="asset/js/script.js"></script> -->
+
+	<script>
+		// ambil session username
+		var loggedInUser = "<?= $_SESSION['username'] ?>";
+
+		// ambil data akses (public/private)
+		var accessList = document.getElementsByClassName("access");
+		// data uploader
+		var uploaderList = document.getElementsByClassName("uploader");
+
+		// ngecek akses yang nilainya private DAN usernya bukan user yang sedang login, maka hilangkan baris
+		for (var i = 0; i < accessList.length; i++) {
+			if (accessList[i].innerHTML == "private" && uploaderList[i].innerHTML != loggedInUser) {
+				accessList[i].parentNode.classList = 'd-none';
+			}
+		}
+
+	</script>
 </body>
 
 </html>
